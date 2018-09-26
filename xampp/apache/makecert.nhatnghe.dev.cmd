@@ -88,6 +88,9 @@ if exist serial.txt.attr del serial.txt.attr
 if exist serial.txt.old del serial.txt.old
 if exist serial.txt del serial.txt
 
+if not exist ..\htdocs\nhatnghe.dev mkdir ..\htdocs\nhatnghe.dev
+if not exist ..\htdocs\nhatnghe.dev\index.html echo Hello Nhat Nghe! >..\htdocs\nhatnghe.dev\index.html
+
 echo.
 echo ----- Chung chi SSL cua ban da duoc tao - Your certificate was created.
 echo.
