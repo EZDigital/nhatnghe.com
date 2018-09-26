@@ -1,0 +1,65 @@
+Listen 443
+
+SSLCipherSuite HIGH:MEDIUM:!MD5:!RC4:!3DES
+SSLProxyCipherSuite HIGH:MEDIUM:!MD5:!RC4:!3DES
+SSLHonorCipherOrder on 
+SSLProtocol all -SSLv3
+SSLProxyProtocol all -SSLv3
+SSLPassPhraseDialog  builtin
+SSLSessionCache "shmcb:C:/xampp/apache/logs/ssl_scache(512000)"
+SSLSessionCacheTimeout  300
+
+<VirtualHost *:443>
+DocumentRoot "C:/xampp/htdocs"
+ServerName	localhost
+ServerAdmin server.local@ezdigital.net
+ErrorLog "C:/xampp/apache/logs/localhost-error.log"
+TransferLog "C:/xampp/apache/logs/localhost-access.log"
+
+SSLEngine on
+SSLCertificateFile "conf/ssl.crt/localhost.crt"
+SSLCertificateKeyFile "conf/ssl.key/localhost.key"
+SSLCACertificatePath "C:/xampp/apache/conf/ssl.ca"
+SSLCACertificateFile "C:/xampp/apache/conf/ssl.ca/cacert.pem"
+
+<FilesMatch "\.(cgi|shtml|phtml|php)$">
+    SSLOptions +StdEnvVars
+</FilesMatch>
+<Directory "C:/xampp/apache/cgi-bin">
+    SSLOptions +StdEnvVars
+</Directory>
+
+BrowserMatch "MSIE [2-5]" \
+         nokeepalive ssl-unclean-shutdown \
+         downgrade-1.0 force-response-1.0
+CustomLog "C:/xampp/apache/logs/ssl_request_localhost.log" \
+          "%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b"
+</VirtualHost>
+
+<VirtualHost 127.128.129.1:443>
+DocumentRoot "C:/xampp/htdocs/nhatnghe.dev"
+ServerName	nhatnghe.dev
+ServerAlias	www.nhatnghe.dev nhatnghe
+ServerAdmin server@nhatnghe.dev
+ErrorLog "C:/xampp/apache/logs/nhatnghe.dev-error.log"
+TransferLog "C:/xampp/apache/logs/nhatnghe.dev-access.log"
+
+SSLEngine on
+SSLCertificateFile "conf/ssl.crt/nhatnghe.dev.crt"
+SSLCertificateKeyFile "conf/ssl.key/nhatnghe.dev.key"
+SSLCACertificatePath "C:/xampp/apache/conf/ssl.ca"
+SSLCACertificateFile "C:/xampp/apache/conf/ssl.ca/cacert.pem"
+
+<FilesMatch "\.(cgi|shtml|phtml|php)$">
+    SSLOptions +StdEnvVars
+</FilesMatch>
+<Directory "C:/xampp/apache/cgi-bin">
+    SSLOptions +StdEnvVars
+</Directory>
+
+BrowserMatch "MSIE [2-5]" \
+         nokeepalive ssl-unclean-shutdown \
+         downgrade-1.0 force-response-1.0
+CustomLog "C:/xampp/apache/logs/ssl_request_nhatnghe.dev.log" \
+          "%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b"
+</VirtualHost>
