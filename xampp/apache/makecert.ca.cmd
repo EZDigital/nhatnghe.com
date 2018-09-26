@@ -5,6 +5,7 @@ set OPENSSL_CONF=./conf/openssl-ca.cnf
 if not exist .\conf\ssl.ca mkdir .\conf\ssl.ca
 if not exist .\conf\ssl.key mkdir .\conf\ssl.key
 if not exist .\conf\ssl.csr mkdir .\conf\ssl.csr
+if not exist .\conf\ssl.crt mkdir .\conf\ssl.crt
 if not exist .\conf\ssl.pem mkdir .\conf\ssl.pem
 
 bin\openssl req -x509 -newkey rsa:4096 -sha256 -nodes -out cacert.pem -days 3650 -outform PEM
