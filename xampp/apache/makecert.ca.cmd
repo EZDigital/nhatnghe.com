@@ -23,6 +23,6 @@ echo Chung nhan CA cua ban da duoc tao - Your CA certificate was created.
 echo.
 echo Chung nhan CA cua ban da duoc cap phat - The certificate was provided.
 echo.
-echo ----- ITShare.Online Channel - Online sharing channel on information technology..
+echo ----- EZ Digital - www.ezdigital.net
 echo.
 pause
