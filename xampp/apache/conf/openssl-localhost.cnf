@@ -1,0 +1,50 @@
+HOME            = .
+RANDFILE        = $ENV::HOME/.rnd
+
+####################################################################
+[ req ]
+default_bits       = 2048
+default_keyfile    = localhost.key.pem
+distinguished_name = server_distinguished_name
+req_extensions     = server_req_extensions
+string_mask        = utf8only
+
+####################################################################
+[ server_distinguished_name ]
+countryName         = Country Name (2 letter code), nhan Enter de lay ma Quoc Gia mac dinh la 
+countryName_default = VN
+
+stateOrProvinceName         = State or Province Name (full name), nhan Enter de lay Tinh/Quan mac dinh la
+stateOrProvinceName_default = Go Vap
+
+localityName         = Locality Name (eg, city), nhan Enter de lay Thanh Pho mac dinh la 
+localityName_default = Ho Chi Minh
+
+organizationName            = Organization Name (eg, company), nhan Enter de lay Ten Cong Ty mac dinh la 
+organizationName_default    = EZ Digital Local Server, Limited
+
+commonName           = Common Name (e.g. server FQDN or YOUR name), nhan Enter de lay ten chung CN mac dinh la 
+commonName_default   = My Localhost
+
+emailAddress         = Email Address, nhan Enter de lay dia chi Email mac dinh la 
+emailAddress_default = server.local@ezdigital.net
+
+####################################################################
+[ server_req_extensions ]
+
+subjectKeyIdentifier = hash
+basicConstraints     = CA:FALSE
+keyUsage             = digitalSignature, keyEncipherment
+subjectAltName       = @alternate_names
+nsComment            = "OpenSSL Generated Certificate"
+
+####################################################################
+[ alternate_names ]
+
+DNS.1  = localhost
+
+# IPv4 localhost
+IP.1     = 127.0.0.1
+
+# IPv6 localhost
+IP.2     = ::1
